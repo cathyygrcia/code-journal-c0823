@@ -15,12 +15,62 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
+
   <body>
     <header>
-      <div class="container"></div>
+      <div class="container">
+        <div class="row">
+          <div class="column-full">
+            <h1>Code Journal</h1>
+          </div>
+        </div>
+      </div>
     </header>
     <main class="container">
-      <div data-view="entry-form"></div>
+      <div data-view="entry-form">
+        <div class="row">
+          <div class="column-full">
+            <h1>New Entry</h1>
+          </div>
+        </div>
+        <form id="entry-form">
+          <div class="row">
+            <div class="column-half">
+              <div class="image-wrapper">
+                <img
+                  src="images/placeholder-image-square.jpg"
+                  alt="placeholder"
+                  class="placeholder" />
+              </div>
+            </div>
+            <div class="column-half">
+              <label for="title">Title</label>
+              <div>
+                <input type="text" id="title" name="title" required />
+              </div>
+              <label for="photo-url">Photo URL</label>
+              <div>
+                <input type="text" id="photo-url" name="photoUrl" required />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <label for="notes">Notes</label>
+              <div>
+                <textarea id="notes" rows="13" name="notes" required></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <div class="save-button-div">
+                <button class="save">SAVE</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
       <div data-view="entries" class="hidden"></div>
     </main>
     <script src="js/data.js"></script>

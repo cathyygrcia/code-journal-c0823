@@ -1,0 +1,39 @@
+header {
+  background-color: #4c2676;
+  color: white;
+}
+
+.image-wrapper {
+  margin-bottom: 1rem;
+}
+
+img {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+
+.save-button-div {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.save {
+  background-color: #4c2676;
+  color: white;
+  padding: 0.4rem;
+  border-radius: 10%;
+}
