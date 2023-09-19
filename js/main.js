@@ -2,6 +2,7 @@ const $placeHolderImage = 'images/placeholder-image-square.jpg';
 const $photoUrl = document.querySelector('#photo-url');
 const $placeHolder = document.querySelector('.placeholder');
 const $entryForm = document.querySelector('#entry-form');
+const $ul = document.querySelector('ul');
 
 function photoUrl(event) {
   $placeHolder.setAttribute('src', event.target.value);
@@ -22,5 +23,41 @@ function entryForm(event) {
   $entryForm.reset();
 }
 
+function renderEntry(entry) {
+  const $entryItem = document.createElement('li');
+  $entryItem.setAttribute('class', 'row');
+
+  const $imageWrapper = document.createElement('div');
+  $imageWrapper.setAttribute('class', 'column-half');
+
+  const $image = document.createElement('img');
+  $image.setAttribute('src', entry.photoUrl);
+
+  const $contentWrapper = document.createElement('div');
+  $contentWrapper.setAttribute('div', 'column-half');
+
+  const $title = document.createElement('h3');
+  $title.textContent = entry.title;
+
+  const $notes = document.createElement('p');
+  $notes.textContent = entry.notes;
+
+  $entryItem.appendChild($imageWrapper);
+  $entryItem.appendChild($contentWrapper);
+  $imageWrapper.appendChild($image);
+  $contentWrapper.appendChild($title);
+  $contentWrapper.appendChild($notes);
+
+  return $entryItem;
+}
+
+function contentLoaded(event) {
+  for (let i = 0; i < data.entries.length; i++) {
+    const $entry = renderEntry(data.entries[i]);
+    $ul.appendChild($entry);
+  }
+}
+
 $photoUrl.addEventListener('input', photoUrl);
 $entryForm.addEventListener('submit', entryForm);
+document.addEventListener('DOMContentLoaded', contentLoaded);
