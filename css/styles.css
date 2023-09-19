@@ -37,3 +37,8 @@ textarea {
   padding: 0.4rem;
   border-radius: 10%;
 }
+
+.no-entries {
+  display: flex;
+  justify-content: center;
+}
