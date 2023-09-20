@@ -3,6 +3,11 @@ const $photoUrl = document.querySelector('#photo-url');
 const $placeHolder = document.querySelector('.placeholder');
 const $entryForm = document.querySelector('#entry-form');
 const $ul = document.querySelector('ul');
+const $noEntries = document.querySelector('.no-entries');
+const $entryFormView = document.querySelector('[data-view = "entry-form"]');
+const $entries = document.querySelector('[data-view = "entries"]');
+const $entriesButton = document.querySelector('.entries-button');
+const $newButton = document.querySelector('.new-button');
 
 function photoUrl(event) {
   $placeHolder.setAttribute('src', event.target.value);
@@ -19,8 +24,11 @@ function entryForm(event) {
   };
   data.nextEntryId++;
   data.entries.unshift(entry);
+  $ul.prepend(renderEntry(entry));
   $placeHolder.setAttribute('src', $placeHolderImage);
   $entryForm.reset();
+  viewSwap('entries');
+  toggleNoEntries();
 }
 
 function renderEntry(entry) {
@@ -58,6 +66,32 @@ function contentLoaded(event) {
   }
 }
 
+function toggleNoEntries() {
+  if (data.entries.length > 0) {
+    $noEntries.classList.add('hidden');
+  } else {
+    $noEntries.classList.remove('hidden');
+  }
+}
+
+function viewSwap(view) {
+  if (view === 'entries') {
+    $entryFormView.classList.add('hidden');
+    $entries.classList.remove('hidden');
+  } else {
+    $entryFormView.classList.remove('hidden');
+    $entries.classList.add('hidden');
+  }
+  data.view = view;
+}
+
 $photoUrl.addEventListener('input', photoUrl);
 $entryForm.addEventListener('submit', entryForm);
 document.addEventListener('DOMContentLoaded', contentLoaded);
+
+$entriesButton.addEventListener('click', function (event) {
+  viewSwap('entries');
+});
+$newButton.addEventListener('click', function (event) {
+  viewSwap('entry-form');
+});

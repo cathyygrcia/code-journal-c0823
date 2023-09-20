@@ -25,6 +25,10 @@ textarea {
   border-radius: 5px;
 }
 
+ul {
+  padding-left: 0;
+}
+
 .save-button-div {
   display: flex;
   justify-content: flex-end;
@@ -41,4 +45,28 @@ textarea {
 .no-entries {
   display: flex;
   justify-content: center;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+}
+
+.entries-button {
+  margin-left: 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.new {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-button {
+  background-color: #4c2676;
+  color: white;
+  padding: 0.4rem;
+  border-radius: 10%;
 }
