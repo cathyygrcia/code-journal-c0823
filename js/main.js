@@ -64,11 +64,10 @@ function contentLoaded(event) {
   for (let i = 0; i < data.entries.length; i++) {
     const $entry = renderEntry(data.entries[i]);
     $ul.appendChild($entry);
-    viewSwap(data.view);
-    toggleNoEntries();
   }
+  viewSwap(data.view);
+  toggleNoEntries();
 }
-toggleNoEntries();
 
 function toggleNoEntries() {
   if (data.entries.length > 0) {
