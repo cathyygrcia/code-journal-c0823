@@ -40,6 +40,7 @@ function renderEntry(entry) {
 
   const $image = document.createElement('img');
   $image.setAttribute('src', entry.photoUrl);
+  $image.setAttribute('alt', entry.photoUrl);
 
   const $contentWrapper = document.createElement('div');
   $contentWrapper.setAttribute('div', 'column-half');
@@ -63,8 +64,11 @@ function contentLoaded(event) {
   for (let i = 0; i < data.entries.length; i++) {
     const $entry = renderEntry(data.entries[i]);
     $ul.appendChild($entry);
+    viewSwap(data.view);
+    toggleNoEntries();
   }
 }
+toggleNoEntries();
 
 function toggleNoEntries() {
   if (data.entries.length > 0) {
