@@ -34,6 +34,7 @@ function entryForm(event) {
 function renderEntry(entry) {
   const $entryItem = document.createElement('li');
   $entryItem.setAttribute('class', 'row');
+  $entryItem.setAttribute('data-enty-id', entry.entryId);
 
   const $imageWrapper = document.createElement('div');
   $imageWrapper.setAttribute('class', 'column-half');
@@ -43,10 +44,18 @@ function renderEntry(entry) {
   $image.setAttribute('alt', entry.photoUrl);
 
   const $contentWrapper = document.createElement('div');
-  $contentWrapper.setAttribute('div', 'column-half');
+  $contentWrapper.setAttribute('class', 'column-half');
+
+  const $anotherWrapper = document.createElement('div');
+  $anotherWrapper.setAttribute('class', 'edit');
 
   const $title = document.createElement('h3');
   $title.textContent = entry.title;
+
+  const $pencilIcon = document.createElement('i');
+  $pencilIcon.classList.add('fas', 'fa-pencil-alt');
+
+  const $notesWrapper = document.createElement('div');
 
   const $notes = document.createElement('p');
   $notes.textContent = entry.notes;
@@ -54,8 +63,11 @@ function renderEntry(entry) {
   $entryItem.appendChild($imageWrapper);
   $entryItem.appendChild($contentWrapper);
   $imageWrapper.appendChild($image);
-  $contentWrapper.appendChild($title);
-  $contentWrapper.appendChild($notes);
+  $contentWrapper.appendChild($anotherWrapper);
+  $anotherWrapper.appendChild($title);
+  $anotherWrapper.appendChild($pencilIcon);
+  $contentWrapper.appendChild($notesWrapper);
+  $notesWrapper.appendChild($notes);
 
   return $entryItem;
 }

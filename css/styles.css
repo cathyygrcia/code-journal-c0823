@@ -29,6 +29,14 @@ ul {
   padding-left: 0;
 }
 
+h3 {
+  margin-top: 0;
+}
+
+p {
+  margin-top: 0;
+}
+
 .save-button-div {
   display: flex;
   justify-content: flex-end;
@@ -69,4 +77,10 @@ ul {
   color: white;
   padding: 0.4rem;
   border-radius: 10%;
+}
+
+.edit {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
