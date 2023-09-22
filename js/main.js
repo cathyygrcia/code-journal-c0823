@@ -34,7 +34,7 @@ function entryForm(event) {
 function renderEntry(entry) {
   const $entryItem = document.createElement('li');
   $entryItem.setAttribute('class', 'row');
-  $entryItem.setAttribute('data-enty-id', entry.entryId);
+  $entryItem.setAttribute('data-entry-id', entry.entryId);
 
   const $imageWrapper = document.createElement('div');
   $imageWrapper.setAttribute('class', 'column-half');
@@ -109,4 +109,17 @@ $entriesButton.addEventListener('click', function (event) {
 });
 $newButton.addEventListener('click', function (event) {
   viewSwap('entry-form');
+});
+
+$ul.addEventListener('click', function (event) {
+  viewSwap('entry-form');
+  if (event.target.tagName === 'I') {
+    const closestLi = event.target.closest('li').getAttribute('data-entry-id');
+
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === Number(closestLi)) {
+        data.editing = data.entries[i];
+      }
+    }
+  }
 });
