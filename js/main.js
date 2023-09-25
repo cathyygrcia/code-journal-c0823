@@ -8,6 +8,9 @@ const $entryFormView = document.querySelector('[data-view = "entry-form"]');
 const $entries = document.querySelector('[data-view = "entries"]');
 const $entriesButton = document.querySelector('.entries-button');
 const $newButton = document.querySelector('.new-button');
+const $entryTitle = document.querySelector('#title');
+const $entryNotes = document.querySelector('#notes');
+const $h1 = document.querySelector('.new-entry');
 
 function photoUrl(event) {
   $placeHolder.setAttribute('src', event.target.value);
@@ -119,6 +122,11 @@ $ul.addEventListener('click', function (event) {
     for (let i = 0; i < data.entries.length; i++) {
       if (data.entries[i].entryId === Number(closestLi)) {
         data.editing = data.entries[i];
+        $entryTitle.value = data.editing.title;
+        $entryNotes.value = data.editing.notes;
+        $photoUrl.value = data.editing.photoUrl;
+        $placeHolder.setAttribute('src', data.editing.photoUrl);
+        $h1.textContent = 'Edit Entry';
       }
     }
   }
