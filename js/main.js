@@ -1,4 +1,4 @@
-const $placeHolderImage = 'images/placeholder-image-square.jpg';
+const placeHolderImage = 'images/placeholder-image-square.jpg';
 const $photoUrl = document.querySelector('#photo-url');
 const $placeHolder = document.querySelector('.placeholder');
 const $entryForm = document.querySelector('#entry-form');
@@ -11,6 +11,7 @@ const $newButton = document.querySelector('.new-button');
 const $entryTitle = document.querySelector('#title');
 const $entryNotes = document.querySelector('#notes');
 const $h1 = document.querySelector('.new-entry');
+const $li = document.querySelectorAll('li');
 
 function photoUrl(event) {
   $placeHolder.setAttribute('src', event.target.value);
@@ -19,19 +20,37 @@ function photoUrl(event) {
 function entryForm(event) {
   event.preventDefault();
 
-  const entry = {
-    entryId: data.nextEntryId,
-    title: event.target.elements.title.value,
-    photoUrl: event.target.elements.photoUrl.value,
-    notes: event.target.elements.notes.value,
-  };
-  data.nextEntryId++;
-  data.entries.unshift(entry);
-  $ul.prepend(renderEntry(entry));
-  $placeHolder.setAttribute('src', $placeHolderImage);
-  $entryForm.reset();
+  if (data.editing === null) {
+    $h1.textContent = 'New Entry';
+    const entry = {
+      entryId: data.nextEntryId,
+      title: event.target.elements.title.value,
+      photoUrl: event.target.elements.photoUrl.value,
+      notes: event.target.elements.notes.value,
+    };
+
+    data.nextEntryId++;
+    data.entries.unshift(entry);
+    $ul.prepend(renderEntry(entry));
+    $placeHolder.setAttribute('src', placeHolderImage);
+    toggleNoEntries();
+    $entryForm.reset();
+  } else {
+    $h1.textContent = 'Edit Entry';
+
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.entries[i].title = event.target.elements.title.value;
+        data.entries[i].photoUrl = event.target.elements.photoUrl.value;
+        data.entries[i].notes = event.target.elements.notes.value;
+        $li[i].replaceWith(renderEntry(data.entries[i]));
+      }
+    }
+  }
   viewSwap('entries');
-  toggleNoEntries();
+  $h1.textContent = 'New Entry';
+  data.editing = null;
+  $entryForm.reset();
 }
 
 function renderEntry(entry) {
