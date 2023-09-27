@@ -11,7 +11,6 @@ const $newButton = document.querySelector('.new-button');
 const $entryTitle = document.querySelector('#title');
 const $entryNotes = document.querySelector('#notes');
 const $h1 = document.querySelector('.new-entry');
-const $li = document.querySelectorAll('li');
 
 function photoUrl(event) {
   $placeHolder.setAttribute('src', event.target.value);
@@ -43,14 +42,16 @@ function entryForm(event) {
         data.entries[i].title = event.target.elements.title.value;
         data.entries[i].photoUrl = event.target.elements.photoUrl.value;
         data.entries[i].notes = event.target.elements.notes.value;
+
+        const $li = document.querySelectorAll('li');
         $li[i].replaceWith(renderEntry(data.entries[i]));
       }
     }
+    $h1.textContent = 'New Entry';
+    data.editing = null;
   }
-  viewSwap('entries');
-  $h1.textContent = 'New Entry';
-  data.editing = null;
   $entryForm.reset();
+  viewSwap('entries');
 }
 
 function renderEntry(entry) {
@@ -131,6 +132,12 @@ $entriesButton.addEventListener('click', function (event) {
 });
 $newButton.addEventListener('click', function (event) {
   viewSwap('entry-form');
+  data.editing = null;
+  $entryTitle.value = '';
+  $entryNotes.value = '';
+  $photoUrl.value = '';
+  $placeHolder.setAttribute('src', placeHolderImage);
+  $h1.textContent = 'New Entry';
 });
 
 $ul.addEventListener('click', function (event) {
