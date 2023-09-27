@@ -84,3 +84,14 @@ p {
   justify-content: space-between;
   width: 100%;
 }
+
+.delete-button {
+  background-color: white;
+  margin-right: auto;
+  color: red;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+  text-transform: none;
+  text-decoration: underline;
+}

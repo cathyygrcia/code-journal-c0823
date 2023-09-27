@@ -11,6 +11,7 @@ const $newButton = document.querySelector('.new-button');
 const $entryTitle = document.querySelector('#title');
 const $entryNotes = document.querySelector('#notes');
 const $h1 = document.querySelector('.new-entry');
+const $deleteButton = document.querySelector('.delete-button');
 
 function photoUrl(event) {
   $placeHolder.setAttribute('src', event.target.value);
@@ -153,6 +154,7 @@ $ul.addEventListener('click', function (event) {
         $photoUrl.value = data.editing.photoUrl;
         $placeHolder.setAttribute('src', data.editing.photoUrl);
         $h1.textContent = 'Edit Entry';
+        $deleteButton.classList.remove('hidden');
       }
     }
   }
