@@ -64,13 +64,29 @@
             </div>
           </div>
           <div class="row">
-            <div class="column-full">
+            <div class="column-full align">
+              <div>
+                <button type="button" class="delete-button hidden">
+                  Delete Entry
+                </button>
+              </div>
               <div class="save-button-div">
                 <button class="save">SAVE</button>
               </div>
             </div>
           </div>
         </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay hidden">
+          <div class="modal-box">
+            <p>Are you sure you want to delete this entry?</p>
+            <div class="button-wrappers">
+              <button class="cancel-button">Cancel</button>
+              <button class="confirm-button">Confirm</button>
+            </div>
+          </div>
+        </div>
       </div>
       <div data-view="entries" class="hidden">
         <div class="row">

@@ -84,3 +84,70 @@ p {
   justify-content: space-between;
   width: 100%;
 }
+
+.delete-button {
+  background-color: white;
+  margin-right: auto;
+  color: red;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+  text-transform: none;
+  text-decoration: underline;
+}
+
+.overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  width: 500px;
+  height: 200px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-wrappers {
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-button {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: black;
+  background-color: #b6b6b6;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.confirm-button {
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
+  background-color: #dd342f;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.align {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
