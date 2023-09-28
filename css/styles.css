@@ -97,7 +97,7 @@ p {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.6);
   top: 0;
   right: 0;
@@ -116,5 +116,38 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.button-wrappers {
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-button {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: black;
+  background-color: #b6b6b6;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.confirm-button {
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: white;
+  background-color: #dd342f;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.align {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }

@@ -12,6 +12,9 @@ const $entryTitle = document.querySelector('#title');
 const $entryNotes = document.querySelector('#notes');
 const $h1 = document.querySelector('.new-entry');
 const $deleteButton = document.querySelector('.delete-button');
+const $overlay = document.querySelector('.overlay');
+const $cancel = document.querySelector('.cancel-button');
+const $confirm = document.querySelector('.confirm-button');
 
 function photoUrl(event) {
   $placeHolder.setAttribute('src', event.target.value);
@@ -139,6 +142,7 @@ $newButton.addEventListener('click', function (event) {
   $photoUrl.value = '';
   $placeHolder.setAttribute('src', placeHolderImage);
   $h1.textContent = 'New Entry';
+  $deleteButton.classList.add('hidden');
 });
 
 $ul.addEventListener('click', function (event) {
@@ -158,4 +162,27 @@ $ul.addEventListener('click', function (event) {
       }
     }
   }
+});
+
+$deleteButton.addEventListener('click', function () {
+  $overlay.classList.remove('hidden');
+});
+
+$cancel.addEventListener('click', function () {
+  $overlay.classList.add('hidden');
+});
+
+$confirm.addEventListener('click', function () {
+  const $li = document.querySelectorAll('li');
+
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i] === data.editing) {
+      data.entries.splice(i, 1);
+
+      $li[i].remove();
+    }
+  }
+  $overlay.classList.add('hidden');
+  viewSwap('entries');
+  toggleNoEntries();
 });
